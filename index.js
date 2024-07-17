@@ -5,22 +5,6 @@ const { startTelegramClient } = require('./telegram.js')
 const app = express()
 const port = 3001
 
+//  startTelegramClient()
 
-
-
-
- startTelegramClient()
-
-
-
-
-
-
-
-
-
-
-
-
-
-app.listen(port, () => { console.log(`Servidor funcionando: http://localhost:${port}`) })
+// app.listen(port, () => { console.log(`Servidor funcionando: http://localhost:${port}`) })
