@@ -1,6 +1,6 @@
 const express = require('express')
 
-const { startTelegramClient } = require('./telegram')
+const { startTelegramClient } = require('./telegram.js')
 
 const app = express()
 const port = 3001
