@@ -12,13 +12,12 @@ const bot = new Telegraf(process.env.BOT_TOKEN)
 
 let stringSession
 
-
+// Listen to all events on Telegram
 async function eventTelegram(client, event) {
 
     try {
-
-        if (!event || !event.message) return
-
+        if (event.className === 'UpdateUserStatus') return
+        console.log(new Date(), event)
         let events = fs.readFileSync('events.json', 'utf-8')
         let eventsArr = JSON.parse(events)
         eventsArr.push(event)
@@ -29,8 +28,8 @@ async function eventTelegram(client, event) {
         if (msg.media?.className === 'MessageMediaDocument' && msg.media?.voice) {
             const doc = event.message.media.document;
             const buffer = await client.downloadMedia(doc)
-            const tempDocPath = './temp-audio.ogg';
-            fs.writeFileSync(tempDocPath, buffer);
+            const tempDocPath = './temp-audio.ogg'
+            fs.writeFileSync(tempDocPath, buffer)
             if (!msg.message) await client.sendFile(-4272105154, { file: tempDocPath })
             console.log('Msg com áudio enviada!')
             return
@@ -69,7 +68,7 @@ async function eventTelegram(client, event) {
 }
 
 
-
+// Function to start the client of Telegram
 async function startTelegramClient() {
     try {
         console.log('Carregando cliente...')
@@ -93,8 +92,6 @@ async function startTelegramClient() {
         console.log('ChatBot is running!')
         fs.writeFileSync('session.txt', client.session.save())
         client.addEventHandler(async (event) => eventTelegram(client, event))
-
-
     } catch (error) {
         console.log(error)
     }
