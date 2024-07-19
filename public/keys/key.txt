@@ -1,3 +1,0 @@
-https://api.telegram.org/bot7245473267:AAHv9o6MZTUqBmFtkafI6TBZ46d8Y1xS_wQ/getUpdates
-
-7245473267:AAHv9o6MZTUqBmFtkafI6TBZ46d8Y1xS_wQ
