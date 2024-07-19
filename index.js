@@ -1,10 +1,14 @@
+require('dotenv').config()
 const express = require('express')
-
-const { startTelegramClient } = require('./telegram.js')
+const { startTelegramClient, events } = require('./public/utils/telegram.js')
 
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
- startTelegramClient()
+startTelegramClient()
 
-app.listen(port, () => { console.log(`Servidor funcionando: http://localhost:${port}`) })
+app.get('/', (req, res) => {
+    return res.send(events)
+})
+
+app.listen(port, () => { console.log(`Server is running: http://localhost:${port}`) })
